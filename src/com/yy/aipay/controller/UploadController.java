@@ -117,7 +117,7 @@ public class UploadController {
 				if (wService.getWUserById(wid) == null) {
 					Wuser wuser = new Wuser();
 					wuser.setWid(wid);
-					wuser.setWfile(wService.createWcode(path + File.separator +"w"+File.separator));
+					wuser.setWfile(wService.createWcode(path + File.separator + "w" + File.separator));
 					wService.addWuser(wuser);
 					map.put("result", "true");
 					map.put("wid", wuser.getWid());

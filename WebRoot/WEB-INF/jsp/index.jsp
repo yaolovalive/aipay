@@ -155,11 +155,11 @@
 		});
 
 		//生成二维码
-		$("#a").submit(function() {
+		$("#aform").submit(function() {
 			$("#qid").val(qid);
 			$("#wid").val(wid);
 			$("#zid").val(zid);
-			if (($("#qid").val() == '' && $("#wid").val(wid) == '' && $("#zid").val(zid) == '') || $("#qid").val() == null && $("#wid").val(wid) == null && $("#zid").val(zid) == null) {
+			if (($("#qid").val() == '' && $("#wid").val() == '' && $("#zid").val() == '') || ($("#qid").val() == null && $("#wid").val() == null && $("#zid").val() == null) ) {
 				alert("别那么吝啬啊--至少上传一张啊--,刷新下本网页--");
 				return false;
 			} else {
@@ -233,7 +233,7 @@
 			</form>
 		</div>
 		<div id="a" class="box">
-			<form action="upload/a" enctype="post">
+			<form action="upload/a" enctype="post" id="aform">
 				<input type="hidden" name="qid" value="" id="qid" /> <input
 					type="hidden" name="wid" value="" id="wid" /> <input type="hidden"
 					name="zid" value="" id="zid" /> <input type="submit"
