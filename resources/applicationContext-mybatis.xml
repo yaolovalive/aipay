@@ -1,0 +1,54 @@
+<?xml-stylesheet type="text/xsl" href="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+		
+		http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:database.properties"></property>
+	</bean>
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${driverClassName}"></property>
+		<property name="url" value="${url}"></property>
+		<property name="username" value="${username}"></property>
+		<property name="password" value="${password}"></property>
+		<property name="initialSize" value="${initialSize}"></property>
+		<property name="maxActive" value="${maxActive}"></property><!-- 最大连接数 -->
+		<property name="maxIdle" value="${maxIdle}"></property><!-- 最大空闲连接数 -->
+		<property name="minIdle" value="${minIdle}"></property><!-- 最小连接数 -->
+		<property name="maxWait" value="${maxWait}"></property>
+		<property name="removeAbandoned" value="${removeAbandoned}"></property><!-- 是否开启连接回收机制 -->
+		<property name="removeAbandonedTimeout" value="${removeAbandonedTimeout}"></property>
+		<property name="testWhileIdle" value="${testWhileIdle}"></property>
+		<property name="testOnBorrow" value="${testOnBorrow}"></property>
+		<property name="testOnReturn" value="${testOnReturn}"></property>
+		<property name="validationQuery" value="${validationQuery}"></property>
+		<property name="timeBetweenEvictionRunsMillis" value="${timeBetweenEvictionRunsMillis}"></property>
+		<property name="numTestsPerEvictionRun" value="${maxActive}"></property>
+	</bean>
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
+	</bean>
+	
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.yy.aipay.dao"></property>
+	</bean>
+
+</beans>

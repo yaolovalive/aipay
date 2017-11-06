@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yy.aipay.dao.AuserMapper">
+	<!-- 新增数据 -->
+	<insert id="addAuser" parameterType="Auser">
+		insert into auser
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="null != aid and '' != aid">aid,</if>
+			<if test="null != qid and '' != qid">qid,</if>
+			<if test="null != wid and '' != wid">wid,</if>
+			<if test="null != zid and '' != zid">zid,</if>
+			<if test="null != afile and '' != afile">afile</if>
+		</trim>
+		values
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="null != aid and '' != aid">#{aid},</if>
+			<if test="null != qid and '' != qid">#{qid},</if>
+			<if test="null != wid and '' != wid">#{wid},</if>
+			<if test="null != zid and '' != zid">#{zid},</if>
+			<if test="null != afile and '' != afile">#{afile}</if>
+		</trim>
+	</insert>
+	
+	<select parameterType="String" resultType="Auser" id="findById">
+		select * from auser where aid = #{aid}
+	</select>
+	
+</mapper>
