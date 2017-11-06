@@ -159,7 +159,12 @@
 			$("#qid").val(qid);
 			$("#wid").val(wid);
 			$("#zid").val(zid);
-			return true;
+			if (($("#qid").val() == '' && $("#wid").val(wid) == '' && $("#zid").val(zid) == '') || $("#qid").val() == null && $("#wid").val(wid) == null && $("#zid").val(zid) == null) {
+				alert("别那么吝啬啊--至少上传一张啊--,刷新下本网页--");
+				return false;
+			} else {
+				return true;
+			}
 		});
 
 		function w() {
@@ -185,7 +190,6 @@
 			$("#w").hide();
 			$(".filename").text("");
 		}
-
 	});
 </script>
 </head>

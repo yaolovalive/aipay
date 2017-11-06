@@ -84,7 +84,7 @@ public class UploadController {
 				file2.delete();
 			} catch (Exception e) {
 				map.put("result", "error");
-				map.put("message", e.toString());
+				map.put("message", "请上传正常的二维码图片--");
 			}
 		} else {
 			map.put("result", "error");
@@ -128,7 +128,7 @@ public class UploadController {
 				file2.delete();
 			} catch (Exception e) {
 				map.put("result", "error");
-				map.put("message", e.toString());
+				map.put("message", "请上传正常的二维码图片--");
 			}
 		} else {
 			map.put("result", "error");
@@ -172,7 +172,7 @@ public class UploadController {
 				file2.delete();
 			} catch (Exception e) {
 				map.put("result", "error");
-				map.put("message", e.toString());
+				map.put("message", "请上传正常的二维码图片--");
 			}
 		} else {
 			map.put("result", "error");
